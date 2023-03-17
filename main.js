@@ -9,7 +9,11 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: 'Image Reizer',
         width: isDev ? 1000: 500,
-        height: 600
+        height: 600,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+          },
+          //! Attaching our script to the preload.js file
     });
 
     //* Open Dev tools if in developer enviroment

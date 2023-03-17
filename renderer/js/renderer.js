@@ -1,5 +1,6 @@
 //* Bunch of stuff that does stuff to do stuff with index.html
 
+
 const form = document.querySelector('#img-form');
 const img = document.querySelector('#img');
 const outputPath = document.querySelector('#output-path');
@@ -31,7 +32,7 @@ function loadImage(e) {
 }
 
 
-//* Check file is image
+//* Check if the file is image
 function isFileImage(file) {
     const acceptedFileTypes = ['image/gif', 'image/png', 'image/jpeg', 'image/jpg']
     return file && acceptedFileTypes.includes(file['type'])
