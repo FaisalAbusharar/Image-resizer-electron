@@ -1,5 +1,6 @@
 {
   "name": "image-resizer-app",
+  "productName": "Image Resizer",
   "version": "1.0.0",
   "description": "Resize Images",
   "main": "main.js",
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/VoidyCD/Image-resizer-electron/issues"
   },
-  "homepage": "https://github.com/VoidyCD/Image-resizer-electron#readme"
+  "homepage": "https://github.com/VoidyCD/Image-resizer-electron#readme",
+  "dependencies": {
+    "electron": "^23.1.4",
+    "image-resize": "^1.3.2",
+    "toastify-js": "^1.12.0"
+  }
 }
