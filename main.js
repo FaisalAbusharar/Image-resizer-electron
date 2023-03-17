@@ -20,6 +20,20 @@ function createMainWindow() {
     mainWindow.loadFile(path.join(__dirname, './renderer/index.html')) ;
 }
 
+
+//* Create 'about' window
+function createAboutWindow() {
+    const aboutWindow = new BrowserWindow({
+        title: 'About Image Reizer',
+        width: 300,
+        height: 300
+    });
+
+
+
+    aboutWindow.loadFile(path.join(__dirname, './renderer/about.html')) ;
+}
+
 //* App is ready
 
 app.whenReady().then(() => {
@@ -37,16 +51,40 @@ app.whenReady().then(() => {
 });
 
 
+
+
 //* Menu template
+// const menu = [
+//     {
+//         label: 'File',
+//         submenu: [{
+//             label: 'Quit',
+//             click: () => app.quit(),
+//             accelerator: "Alt+F4"
+//         }]
+//     }
+// ]
+
+//? Better to use: role: 'fileMenu'
+
 const menu = [
-    {
-        label: 'File',
+    ...(isMac ? [{
+        label: app.name,
         submenu: [{
-            label: 'Quit',
-            click: () => app.quit(),
-            accelerator: "Alt+F4"
+            label: 'About',
+            click: createAboutWindow
+        }] //* Mac is a pain in the ass
+    }] : []),
+    {
+        role: 'fileMenu',
+    },
+    ...(!isMac ? [{
+        label: 'Help',
+        submenu: [{
+            label: 'About',
+            click: createAboutWindow
         }]
-    }
+    }] : [])
 ]
 
 app.on('window-all-closed', () => {
