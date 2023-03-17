@@ -11,9 +11,13 @@ function createMainWindow() {
         width: isDev ? 1000: 500,
         height: 600,
         webPreferences: {
+            contextIsolation: true, 
+            nodeIntegration: true,
+            //? These 2 are needed for some reason since we just node modules
+
             preload: path.join(__dirname, 'preload.js'),
           },
-          //! Attaching our script to the preload.js file
+          //! Attaching our script to the preload.js file :)
     });
 
     //* Open Dev tools if in developer enviroment
