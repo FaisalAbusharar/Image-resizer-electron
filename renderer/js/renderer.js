@@ -67,6 +67,14 @@ function sendImage(e) {
         width,
         height,
     })
+
+    //* Catch the image:done event.
+ipc.on('image:done', () => {
+    alertSuccess('Successfully resized image.')
+    console.log("succ")
+}) 
+
+
 }
 
 
@@ -89,11 +97,6 @@ function alertError(message) {
         }
     })
 }
-
-//* Catch the image:done event.
-ipc.on('image:done', () => {
-    alertSuccess('Successfully resized image.')
-}) 
 
 
 function alertSuccess(message) {
