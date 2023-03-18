@@ -90,6 +90,11 @@ function alertError(message) {
     })
 }
 
+//* Catch the image:done event.
+ipc.on('image:done', () => {
+    alertSuccess('Successfully resized image.')
+}) 
+
 
 function alertSuccess(message) {
     Toastify.toast({
