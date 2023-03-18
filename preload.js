@@ -12,7 +12,7 @@ contextBridge.exposeInMainWorld('path', {
 });
 
 contextBridge.exposeInMainWorld('Toastify', {
-  toast: (...args) => Toastify(options).showToast(),
+  toast: (options) => Toastify(options).showToast(),
 });
 
 
