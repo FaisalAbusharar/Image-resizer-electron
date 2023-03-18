@@ -1,18 +1,31 @@
-const { contextBridge } = require('electron')
 const os = require('os');
-const path = require('path')
+const path = require('path');
+const Toastify = require('toastify-js')
+const { contextBridge } = require('electron') 
 
 contextBridge.exposeInMainWorld('os', {
-    homedir: () => os.homedir()
-    
-    
-    
-})
+  homedir: () => os.homedir(),
+});
 
 contextBridge.exposeInMainWorld('path', {
-    join: (...args) => path.join(...args)
+  join: (...args) => path.join(...args),
+});
+
+contextBridge.exposeInMainWorld('Toastify', {
+  toast: (...args) => Toastify(options).showToast(),
+});
+
+
+//* Just to use for testing
+/*
+contextBridge.exposeInMainWorld('versions', {
+    node: () => process.versions.node,
+    
+    
     
 })
+*/
+
 
 /*
 

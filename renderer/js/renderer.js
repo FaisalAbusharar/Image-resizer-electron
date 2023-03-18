@@ -8,9 +8,11 @@
 const form = document.querySelector('#img-form');
 const img = document.querySelector('#img');
 const outputPath = document.querySelector('#output-path');
+
 const filename = document.querySelector('#filename')
 const heightInput = document.querySelector('#height')
 const widthInput = document.querySelector('#width');
+
 
 
 function loadImage(e) {
@@ -24,14 +26,16 @@ function loadImage(e) {
     //* Get original dimensions
     const image = new Image();
     image.src = URL.createObjectURL(file);
-    image.onload = function() {
+    image.onload = function () {
         widthInput.value = this.width;
         heightInput.value = this.height;
     }
 
-
+    //* Show form, image name and output path
     form.style.display = 'block';
     filename.innerText = file.name;
+    outputPath.innerText = path.join(os.homedir(), 'imageresizer');
+
 
 }
 
