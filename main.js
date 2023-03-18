@@ -1,5 +1,8 @@
 const path = require('path')
-const { app, BrowserWindow, Menu } = require('electron')
+const os = require('os')
+const fs = require('fs')
+const resizeImg = require('resize-img');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
 const isDev = process.env.NODE_EV !== 'production'
 const isMac = process.platform === 'darwin'
@@ -94,6 +97,21 @@ const menu = [
         }]
     }] : [])
 ]
+
+//* Respond to ipcRenderer Resize.
+ipcMain.on('image:resize', (e,options) => {
+    options.dest = path.join(os.homedir(), 'imageresizer')
+    // console.log(options)
+    resizeImage(options)
+})
+
+async function resizeImage({ imgPath, width, height, dest }) {
+    try {
+      const newPath = await resizeImg(fs.readFileSync()) // yes  
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 app.on('window-all-closed', () => {
     if (!isMac) {

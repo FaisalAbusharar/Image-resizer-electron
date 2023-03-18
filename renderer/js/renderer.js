@@ -1,5 +1,6 @@
 //* Bunch of stuff that does stuff to do stuff with index.html
 
+
 //! renderer processes run web pages and do not run Node.js by default for security reasons.
 //! Hence why we cant run this in here:
 //* const os = require("os")
@@ -61,6 +62,11 @@ function sendImage(e) {
     }
 
     //* Send to main.js using ipcRenderer.
+    ipc.send('image:resize', {
+        imgPath,
+        width,
+        height,
+    })
 }
 
 
